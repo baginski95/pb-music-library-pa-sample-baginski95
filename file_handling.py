@@ -11,6 +11,7 @@ def import_data(filename='albums_data.txt'):
     :rtype: list
     """
 
+
 def export_data(albums, filename='albums_data.txt', mode='a'):
     """
     Export data from a list to file. If called with mode 'w' it should overwrite
@@ -24,4 +25,8 @@ def export_data(albums, filename='albums_data.txt', mode='a'):
     :raises ValueError: if mode other than 'w' or 'a' was given. Error message:
         'Wrong write mode'
     """
-
+    if mode not in {'w', 'a'}:
+        raise ValueError('Wrong write mode')
+    with open(filename, mode) as file:
+        for album in albums:
+            file.writeline(','.join(album) + '\n')
