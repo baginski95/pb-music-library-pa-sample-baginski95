@@ -33,4 +33,4 @@ def export_data(albums, filename='albums_data.txt', mode='a'):
         raise ValueError('Wrong write mode')
     with open(filename, mode) as file:
         for album in albums:
-            file.writeline(','.join(album))
+            file.write(','.join(album) + '\n')
