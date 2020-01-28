@@ -54,11 +54,11 @@ def choose_option():
         for genre_name, amount_of_albums in genre_stats.items():
             display.print_command_result(f'{genre_name}|{amount_of_albums}')
     elif option == '6':
-        oldest_album = music_reports.get_oldest_album(albums)
+        oldest_album = music_reports.get_last_oldest(albums)
         display.print_album_info(oldest_album)
     elif option == '7':
         get_genre = get_inputs(['genre: '])
-        oldest_album_in_genre = music_reports.get_oldest_of_genre(albums, get_genre[0])
+        oldest_album_in_genre = music_reports.get_last_oldest_of_genre(albums, get_genre[0])
         display.print_album_info(oldest_album_in_genre)
     elif option == '8':
         sys.exit()

@@ -70,7 +70,7 @@ def get_genre_stats(albums):
     return genres_dict
 
 
-def get_oldest_album(albums):
+def get_last_oldest(albums):
     """
     Get oldest album from all albums
     :param list albums: albums' data
@@ -84,7 +84,7 @@ def get_oldest_album(albums):
     return oldest_album
 
 
-def get_oldest_of_genre(albums, genre):
+def get_last_oldest_of_genre(albums, genre):
     """
     Get oldest album of given genre
     :param list albums: albums' data
