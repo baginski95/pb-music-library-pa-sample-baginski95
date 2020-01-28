@@ -43,6 +43,28 @@ def main():
     You should create new functions and call them from main whenever it can
     make the code cleaner
     """
+    is_program_working = True
+    while is_program_working:
+        display.print_program_menu(MAIN_MENU)
+        choose_option = get_inputs(['Enter option number: '])
+        option = choose_option[0]
+        if option == '0':
+            add_album()
+        elif option == '1':
+            remove_album()
+        elif option == '2':
+            get_genre = get_inputs(['genre: '])
+            albums = file_handling.import_data()
+            display.print_albums_list(music_reports.get_albums_by_genre(albums, get_genre[0]))
+        elif option == '3':
+            albums = file_handling.import_data()
+            display.print_album_info(music_reports.get_longest_album(albums))
+        elif option == '4':
+            albums = file_handling.import_data()
+            total_albums_length = music_reports.get_total_albums_length(albums)
+            display.print_command_result(f'Total albums length in mins: {total_albums_length}')
+        elif option == '5':
+            sys.exit()
 
 
 if __name__ == '__main__':
