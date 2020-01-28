@@ -39,6 +39,7 @@ def get_longest_album(albums):
             longest_album = album
     return longest_album
 
+
 def get_total_albums_length(albums):
     """
     Get sum of lengths of all albums in minutes, rounded to 2 decimal places
@@ -47,3 +48,9 @@ def get_total_albums_length(albums):
     :returns: total albums' length in minutes
     :rtype: float
     """
+    total_albums_length = 0.00
+    for album in albums:
+        minutes, seconds = album[lENGTH].split(':')
+        total_albums_length += float(minutes) + float(seconds)/60.0
+    total_albums_length = round(total_albums_length, 2)
+    return total_albums_length
