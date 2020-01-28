@@ -6,7 +6,9 @@ import music_reports
 import display
 import sys
 
-MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album','Get total albums length', 'Exit']
+MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album', 'Get total albums length', 'Get genres stats', 'Exit']
+GENRE_NAME = 0
+AMOUNT_OF_ALBUMS = 1
 
 
 def get_inputs(list_labels):
@@ -64,6 +66,11 @@ def main():
             total_albums_length = music_reports.get_total_albums_length(albums)
             display.print_command_result(f'Total albums length in mins: {total_albums_length}')
         elif option == '5':
+            albums = file_handling.import_data()
+            genre_stats = music_reports.get_genre_stats(albums)
+            for genre_name, amount_of_albums in genre_stats.items():
+                display.print_command_result(f'{genre_name}|{amount_of_albums}')
+        elif option == '6':
             sys.exit()
 
 
