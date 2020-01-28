@@ -71,6 +71,12 @@ def get_genre_stats(albums):
 
 
 def get_oldest_album(albums):
+    """
+    Get oldest album from all albums
+    :param list albums: albums' data
+    :returns: oldest album specifications
+    :rtype: list
+    """
     oldest_album = albums[0]
     for album in albums:
         if int(album[YEAR]) > int(oldest_album[YEAR]):
