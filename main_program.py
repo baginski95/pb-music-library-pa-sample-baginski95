@@ -43,7 +43,10 @@ def choose_option():
         remove_album(albums)
     elif option == '2':
         get_genre = get_inputs(['genre: '])
-        display.print_albums_list(music_reports.get_albums_by_genre(albums, get_genre[0]))
+        try:
+            display.print_albums_list(music_reports.get_albums_by_genre(albums, get_genre[0]))
+        except ValueError as err:
+            display.print_command_result(str(err))
     elif option == '3':
         display.print_album_info(music_reports.get_longest_album(albums))
     elif option == '4':

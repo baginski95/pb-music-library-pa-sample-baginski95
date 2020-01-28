@@ -19,6 +19,8 @@ def get_albums_by_genre(albums, genre):
     for album in albums:
         if album[GENRE] == genre:
             same_genre_albums.append(album)
+    if not same_genre_albums:
+        raise ValueError('Wrong genre')
     return same_genre_albums
 
 
