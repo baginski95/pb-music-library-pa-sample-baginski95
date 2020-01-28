@@ -24,6 +24,16 @@ def add_album():
     file_handling.export_data(albums, mode='w')
 
 
+def remove_album():
+    ALBUM_NAME = 0
+    albums = file_handling.import_data()
+    get_album_name = get_inputs(['album name: '])
+    for album in albums[:]:
+        if album[ALBUM_NAME] == get_album_name[0]:
+            albums.remove(album)
+    file_handling.export_data(albums, mode='w')
+
+
 def main():
     """
     Calls all interaction between user and program, handles program menu
