@@ -6,7 +6,8 @@ import music_reports
 import display
 import sys
 
-MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album', 'Get total albums length', 'Get genres stats', 'Get oldest album', 'Exit']
+MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album',
+            'Get total albums length', 'Get genres stats', 'Get oldest album', 'Get oldest album by genre', 'Exit']
 ALBUM_NAME = 0
 
 
@@ -67,6 +68,10 @@ def main():
             oldest_album = music_reports.get_oldest_album(albums)
             display.print_album_info(oldest_album)
         elif option == '7':
+            get_genre = get_inputs(['genre: '])
+            oldest_album_in_genre = music_reports.get_oldest_of_genre(albums, genre)
+            display.print_album_info(oldest_album_in_genre)
+        elif option == '8':
             sys.exit()
 
 
