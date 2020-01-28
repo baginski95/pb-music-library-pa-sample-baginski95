@@ -92,7 +92,7 @@ def get_oldest_of_genre(albums, genre):
     :returns: oldest album specifications in given genre
     :rtype: list
     """
-    oldest_genre_album = []
+    oldest_genre_album = albums[0]
     for album in albums:
         if album[GENRE] == genre and (int(album[YEAR]) < int(oldest_genre_album[YEAR])):
             oldest_genre_album = album
