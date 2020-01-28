@@ -54,3 +54,25 @@ def get_total_albums_length(albums):
         total_albums_length += float(minutes) + float(seconds)/60.0
     total_albums_length = round(total_albums_length, 2)
     return total_albums_length
+
+
+def get_genre_stats(albums):
+    """
+    Get all genres and count how many albums they have
+    :param list albums: albums' data
+    :returns: all genres and their amount of albums
+    :rtype: dict
+    """
+    genres_dict = {}
+    for album in albums:
+        genres_dict.setdefault(album[GENRE], 0)
+        genres_dict[album[GENRE]] += 1
+    return genres_dict
+
+
+def get_oldest_album(albums):
+    oldest_album = albums[0]
+    for album in albums:
+        if album[YEAR] > oldest_album[YEAR]:
+            oldest_album = album
+    return oldest_album
