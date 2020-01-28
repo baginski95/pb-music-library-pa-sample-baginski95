@@ -31,7 +31,13 @@ def get_longest_album(albums):
     :returns: longest album
     :rtype: list
     """
-
+    longest_album = albums[0]
+    for album in albums:
+        album_time = float(album[lENGTH].replace(':', '.'))
+        longest_album_time = float(longest_album[lENGTH].replace(':', '.'))
+        if album_time > longest_album_time:
+            longest_album = album
+    return longest_album
 
 def get_total_albums_length(albums):
     """
