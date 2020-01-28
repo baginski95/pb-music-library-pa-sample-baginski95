@@ -17,6 +17,13 @@ def get_inputs(list_labels):
     return inputs
 
 
+def add_album():
+    albums = file_handling.import_data()
+    album_properties = get_inputs(['artist name: ', 'album name: ', 'release year: ', 'genre: ', 'length: '])
+    albums.append(album_properties)
+    file_handling.export_data(albums, mode='w')
+
+
 def main():
     """
     Calls all interaction between user and program, handles program menu
