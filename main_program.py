@@ -8,7 +8,7 @@ import sys
 
 MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album',
             'Get total albums length', 'Get genres stats', 'Get oldest album', 'Get oldest album by genre', 'Exit']
-ALBUM_NAME = 0
+ARTIST_NAME = 0
 
 
 def get_inputs(list_labels):
@@ -28,7 +28,7 @@ def add_album(albums):
 def remove_album(albums):
     get_album_name = get_inputs(['album name: '])
     for album in albums[:]:
-        if album[ALBUM_NAME] == get_album_name[0]:
+        if album[ARTIST_NAME] == get_album_name[0]:
             albums.remove(album)
     file_handling.export_data(albums, mode='w')
 
