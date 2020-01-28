@@ -1,6 +1,21 @@
 """
 The main program should use functions from music_reports and display modules
 """
+import file_handling
+import music_reports
+import display
+import sys
+
+MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album','Get total albums length', 'Exit']
+
+
+def get_inputs(list_labels):
+    inputs = []
+    for label in list_labels:
+        get_input = input(label)
+        inputs.append(get_input)
+    return inputs
+
 
 def main():
     """
