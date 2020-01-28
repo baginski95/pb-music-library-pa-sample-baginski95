@@ -6,7 +6,7 @@ import music_reports
 import display
 import sys
 
-MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album', 'Get total albums length', 'Get genres stats', 'Exit']
+MAIN_MENU = ['Add album', 'Remove Album', 'Get albums by genre', 'Get longest album', 'Get total albums length', 'Get genres stats', 'Get oldest album', 'Exit']
 GENRE_NAME = 0
 AMOUNT_OF_ALBUMS = 1
 
@@ -48,6 +48,7 @@ def main():
     is_program_working = True
     while is_program_working:
         display.print_program_menu(MAIN_MENU)
+
         choose_option = get_inputs(['Enter option number: '])
         option = choose_option[0]
         if option == '0':
@@ -71,6 +72,10 @@ def main():
             for genre_name, amount_of_albums in genre_stats.items():
                 display.print_command_result(f'{genre_name}|{amount_of_albums}')
         elif option == '6':
+            albums = file_handling.import_data()
+            oldest_album = music_reports.get_oldest_album(albums)
+            display.print_album_info(oldest_album)
+        elif option == '7':
             sys.exit()
 
 
