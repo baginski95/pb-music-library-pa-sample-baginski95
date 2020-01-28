@@ -33,6 +33,39 @@ def remove_album(albums):
     file_handling.export_data(albums, mode='w')
 
 
+def choose_option():
+    albums = file_handling.import_data()
+    choose_option = get_inputs(['Enter option number: '])
+    option = choose_option[0]
+    if option == '0':
+        add_album(albums)
+    elif option == '1':
+        remove_album(albums)
+    elif option == '2':
+        get_genre = get_inputs(['genre: '])
+        display.print_albums_list(music_reports.get_albums_by_genre(albums, get_genre[0]))
+    elif option == '3':
+        display.print_album_info(music_reports.get_longest_album(albums))
+    elif option == '4':
+        total_albums_length = music_reports.get_total_albums_length(albums)
+        display.print_command_result(f'Total albums length in mins: {total_albums_length}')
+    elif option == '5':
+        genre_stats = music_reports.get_genre_stats(albums)
+        for genre_name, amount_of_albums in genre_stats.items():
+            display.print_command_result(f'{genre_name}|{amount_of_albums}')
+    elif option == '6':
+        oldest_album = music_reports.get_oldest_album(albums)
+        display.print_album_info(oldest_album)
+    elif option == '7':
+        get_genre = get_inputs(['genre: '])
+        oldest_album_in_genre = music_reports.get_oldest_of_genre(albums, get_genre[0])
+        display.print_album_info(oldest_album_in_genre)
+    elif option == '8':
+        sys.exit()
+    else:
+        raise ValueError("There is no such option")
+
+
 def main():
     """
     Calls all interaction between user and program, handles program menu
@@ -45,34 +78,10 @@ def main():
     is_program_working = True
     while is_program_working:
         display.print_program_menu(MAIN_MENU)
-        albums = file_handling.import_data()
-        choose_option = get_inputs(['Enter option number: '])
-        option = choose_option[0]
-        if option == '0':
-            add_album(albums)
-        elif option == '1':
-            remove_album(albums)
-        elif option == '2':
-            get_genre = get_inputs(['genre: '])
-            display.print_albums_list(music_reports.get_albums_by_genre(albums, get_genre[0]))
-        elif option == '3':
-            display.print_album_info(music_reports.get_longest_album(albums))
-        elif option == '4':
-            total_albums_length = music_reports.get_total_albums_length(albums)
-            display.print_command_result(f'Total albums length in mins: {total_albums_length}')
-        elif option == '5':
-            genre_stats = music_reports.get_genre_stats(albums)
-            for genre_name, amount_of_albums in genre_stats.items():
-                display.print_command_result(f'{genre_name}|{amount_of_albums}')
-        elif option == '6':
-            oldest_album = music_reports.get_oldest_album(albums)
-            display.print_album_info(oldest_album)
-        elif option == '7':
-            get_genre = get_inputs(['genre: '])
-            oldest_album_in_genre = music_reports.get_oldest_of_genre(albums, get_genre[0])
-            display.print_album_info(oldest_album_in_genre)
-        elif option == '8':
-            sys.exit()
+        try:
+            choose_option()
+        except ValueError as err:
+            display.print_command_result(str(err))
 
 
 if __name__ == '__main__':
