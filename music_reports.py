@@ -76,10 +76,12 @@ def get_last_oldest(albums):
     :param list albums: albums' data
     :returns: oldest album specifications
     :rtype: list
+    >>> [["The Beatles", "Revolver", "1966", "rock", "34:43"],["David Bowie", "Low", "1977", "rock", "38:26"]]
+    [["The Beatles", "Revolver", "1966", "rock", "34:43"]]
     """
     oldest_album = albums[0]
     for album in albums:
-        if int(album[YEAR]) < int(oldest_album[YEAR]):
+        if int(album[YEAR]) <= int(oldest_album[YEAR]):
             oldest_album = album
     return oldest_album
 
