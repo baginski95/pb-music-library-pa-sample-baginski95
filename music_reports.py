@@ -13,7 +13,10 @@ def get_albums_by_genre(albums, genre):
     :param str genre: genre to filter by
 
     :returns: all albums of given genre
-    :rtype: list
+    :rtype: list of lists
+
+    >>> get_albums_by_genre([['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26']], 'pop')
+    [['Monika Brodka', 'Granada', '2010', 'pop', '37:42']]
     """
     same_genre_albums = []
     for album in albums:
@@ -32,6 +35,9 @@ def get_longest_album(albums):
     :param list albums: albums' data
     :returns: longest album
     :rtype: list
+
+    >>> get_longest_album([['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26']])
+    ['David Bowie', 'Low', '1977', 'rock', '38:26']
     """
     longest_album = albums[0]
     for album in albums:
@@ -49,6 +55,9 @@ def get_total_albums_length(albums):
     :param list albums: albums' data
     :returns: total albums' length in minutes
     :rtype: float
+
+    >>> get_total_albums_length([['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26']])
+    76.13
     """
     total_albums_length = 0.00
     for album in albums:
@@ -64,6 +73,9 @@ def get_genre_stats(albums):
     :param list albums: albums' data
     :returns: all genres and their amount of albums
     :rtype: dict
+
+    >>> get_genre_stats([['Monika Brodka', 'Granada', '2010', 'pop', '37:42'], ['David Bowie', 'Low', '1977', 'rock', '38:26']])
+    {'pop': 1, 'rock': 1}
     """
     genres_dict = {}
     for album in albums:
@@ -78,8 +90,9 @@ def get_last_oldest(albums):
     :param list albums: albums' data
     :returns: oldest album specifications
     :rtype: list
-    >>> [["The Beatles", "Revolver", "1966", "rock", "34:43"],["David Bowie", "Low", "1977", "rock", "38:26"]]
-    [["The Beatles", "Revolver", "1966", "rock", "34:43"]]
+
+    >>> get_last_oldest([["The Beatles", "Revolver", "1966", "rock", "34:43"],["David Bowie", "Low", "1977", "rock", "38:26"]])
+    ['The Beatles', 'Revolver', '1966', 'rock', '34:43']
     """
     oldest_album = albums[0]
     for album in albums:
@@ -95,6 +108,9 @@ def get_last_oldest_of_genre(albums, genre):
     :param str genre: genre to filter by
     :returns: oldest album specifications in given genre
     :rtype: list
+
+    >>> get_last_oldest_of_genre([["David Bowie", "Low", "1977", "rock", "38:26"], ['The Beatles', 'Revolver', '1966', 'rock', '34:43']], 'rock')
+    ['The Beatles', 'Revolver', '1966', 'rock', '34:43']
     """
     oldest_genre_album = albums[0]
     for album in albums:
